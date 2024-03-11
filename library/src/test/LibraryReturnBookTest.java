@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class LibraryReturnBookTest {
     @Test
-    public void returnBookTest(){
+    public void returnBookTest() {
         //Arrange
         final Library library = new Library();
         final Book book = new Book("title", "mmd", 2);
@@ -25,8 +25,6 @@ public class LibraryReturnBookTest {
         library.returnBook(book, ali);
 
         //Assert
-        final ArrayList<Object> searchList = new ArrayList<>();
-        searchList.add(2);
-        Assert.assertEquals(library.searchBooks(SearchByType.ID, searchList), null);
+        Assert.assertFalse(ali.hasBook(book));
     }
 }
