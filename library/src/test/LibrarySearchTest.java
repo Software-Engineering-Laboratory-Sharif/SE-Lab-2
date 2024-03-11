@@ -5,20 +5,37 @@ import main.classes.Library;
 import main.classes.SearchByType;
 import main.classes.Student;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LibrarySearchTest {
-    @Test
-    public void searchByIdStudentTest(){
-        //Arrange
-        final Library library = new Library();
-        final Student ali = new Student("ali", 1);
-        final Student nima = new Student("nima", 2);
-        final Student mmd = new Student("mmd", 3);
+    Library library;
+    Student ali;
+    Student nima;
+    Student mmd;
+    Book book;
+    Book book1;
+    Book book2;
 
+    @Before
+    public void setup() {
+        //Arrange
+        library = new Library();
+        ali = new Student("ali", 1);
+        nima = new Student("nima", 2);
+        mmd = new Student("mmd", 3);
+        book = new Book("title", "mmd", 1);
+        book1 = new Book("title1", "hashem", 2);
+        book2 = new Book("title2", "nima", 3);
+    }
+
+    @Test
+    public void searchByIdStudentTest() {
         //Act
         library.addStudent(ali);
         library.addStudent(nima);
@@ -33,13 +50,7 @@ public class LibrarySearchTest {
     }
 
     @Test
-    public void searchByNameStudentTest(){
-        //Arrange
-        final Library library = new Library();
-        final Student ali = new Student("ali", 1);
-        final Student nima = new Student("nima", 2);
-        final Student mmd = new Student("mmd", 3);
-
+    public void searchByNameStudentTest() {
         //Act
         library.addStudent(ali);
         library.addStudent(nima);
@@ -55,13 +66,7 @@ public class LibrarySearchTest {
 
 
     @Test
-    public void searchByNameListStudentTest(){
-        //Arrange
-        final Library library = new Library();
-        final Student ali = new Student("ali", 1);
-        final Student nima = new Student("nima", 2);
-        final Student mmd = new Student("mmd", 3);
-
+    public void searchByNameListStudentTest() {
         //Act
         library.addStudent(ali);
         library.addStudent(nima);
@@ -77,13 +82,7 @@ public class LibrarySearchTest {
     }
 
     @Test
-    public void searchByIdBookTest(){
-        //Arrange
-        final Library library = new Library();
-        final Book book = new Book("title", "mmd", 1);
-        final Book book1 = new Book("title1", "hashem", 2);
-        final Book book2 = new Book("title2", "nima", 3);
-
+    public void searchByIdBookTest() {
         //Act
         library.addBook(book);
         library.addBook(book1);
@@ -98,13 +97,7 @@ public class LibrarySearchTest {
     }
 
     @Test
-    public void searchByAuthorBookTest(){
-        //Arrange
-        final Library library = new Library();
-        final Book book = new Book("title", "mmd", 1);
-        final Book book1 = new Book("title1", "hashem", 2);
-        final Book book2 = new Book("title2", "nima", 3);
-
+    public void searchByAuthorBookTest() {
         //Act
         library.addBook(book);
         library.addBook(book1);
@@ -119,13 +112,7 @@ public class LibrarySearchTest {
     }
 
     @Test
-    public void searchByTitleBookTest(){
-        //Arrange
-        final Library library = new Library();
-        final Book book = new Book("title", "mmd", 1);
-        final Book book1 = new Book("title1", "hashem", 2);
-        final Book book2 = new Book("title2", "nima", 3);
-
+    public void searchByTitleBookTest() {
         //Act
         library.addBook(book);
         library.addBook(book1);
@@ -140,13 +127,7 @@ public class LibrarySearchTest {
     }
 
     @Test
-    public void searchByTitleListBookTest(){
-        //Arrange
-        final Library library = new Library();
-        final Book book = new Book("title", "mmd", 1);
-        final Book book1 = new Book("title1", "hashem", 2);
-        final Book book2 = new Book("title2", "nima", 3);
-
+    public void searchByTitleListBookTest() {
         //Act
         library.addBook(book);
         library.addBook(book1);
