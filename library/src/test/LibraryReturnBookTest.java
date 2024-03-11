@@ -3,12 +3,9 @@ package test;
 
 import main.classes.Book;
 import main.classes.Library;
-import main.classes.SearchByType;
 import main.classes.Student;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class LibraryReturnBookTest {
     @Test
