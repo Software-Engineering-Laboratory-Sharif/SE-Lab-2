@@ -20,6 +20,7 @@ public class LibraryReturnBookTest {
         final Student ali = new Student("ali", 1);
 
         //Act
+        library.addStudent(ali);
         library.addBook(book);
         library.lendBook(book, ali);
         library.returnBook(book, ali);
