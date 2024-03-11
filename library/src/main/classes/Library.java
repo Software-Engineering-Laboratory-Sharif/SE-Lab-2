@@ -1,6 +1,8 @@
 package main.classes;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Library {
     private ArrayList<Book> books;
@@ -74,9 +76,14 @@ public class Library {
      * @param keys         The list of keys to search for.
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
-    public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+    public List<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
+        if (searchByType == SearchByType.ID){
+            return students.stream().filter(student -> keys.contains(student.getId())).collect(Collectors.toList());
+        } else if (searchByType == SearchByType.NAME){
+            return students.stream().filter(student -> keys.contains(student.getName())).collect(Collectors.toList());
+        }
+
+        return new ArrayList<>();
     }
 
     /**
@@ -87,7 +94,7 @@ public class Library {
      * @param keys         The list of keys to search for.
      * @return             The list of books that match the search criteria. Returns null if search type is name.
      */
-    public ArrayList<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
+    public List<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
         // TODO complete function
         return null;
     }
