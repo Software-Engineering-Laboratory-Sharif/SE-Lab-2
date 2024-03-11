@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Library {
-    private ArrayList<Book> books;
-    private ArrayList<Student> students;
+    private final ArrayList<Book> books;
+    private final ArrayList<Student> students;
 
     public Library() {
         books = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Library {
      *
      * @param book    The book to be lent.
      * @param student The student who is going to borrow the book.
-     * @return        Returns true if the operation is successful and false otherwise.
+     * @return Returns true if the operation is successful and false otherwise.
      */
     public boolean lendBook(Book book, Student student) {
         if (!this.books.contains(book)) {
@@ -74,12 +74,12 @@ public class Library {
      *
      * @param searchByType Specifies the field used for searching (id, name).
      * @param keys         The list of keys to search for.
-     * @return             The list of students that match the search criteria. Returns null if search type is title or author.
+     * @return The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public List<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        if (searchByType == SearchByType.ID){
+        if (searchByType == SearchByType.ID) {
             return students.stream().filter(student -> keys.contains(student.getId())).collect(Collectors.toList());
-        } else if (searchByType == SearchByType.NAME){
+        } else if (searchByType == SearchByType.NAME) {
             return students.stream().filter(student -> keys.contains(student.getName())).collect(Collectors.toList());
         }
 
@@ -92,11 +92,18 @@ public class Library {
      *
      * @param searchByType Specifies the field used for searching (id, title, or author).
      * @param keys         The list of keys to search for.
-     * @return             The list of books that match the search criteria. Returns null if search type is name.
+     * @return The list of books that match the search criteria. Returns null if search type is name.
      */
     public List<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        if (searchByType == SearchByType.ID) {
+            return books.stream().filter(book -> keys.contains(book.getId())).collect(Collectors.toList());
+        } else if (searchByType == SearchByType.TITLE) {
+            return books.stream().filter(book -> keys.contains(book.getTitle())).collect(Collectors.toList());
+        } else if (searchByType == SearchByType.AUTHOR) {
+            return books.stream().filter(book -> keys.contains(book.getAuthor())).collect(Collectors.toList());
+        }
+
+        return new ArrayList<>();
     }
 
     /**
