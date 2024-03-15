@@ -30,6 +30,10 @@ public class Library {
      * @return Returns true if the operation is successful and false otherwise.
      */
     public boolean lendBook(Book book, Student student) {
+        if (!this.students.contains(student)){
+            System.out.println("!! Student " + student.getName() + " not registered.");
+            return false;
+        }
         if (!this.books.contains(book)) {
             System.out.println("!! Book " + book.getTitle() + " not registered.");
             return false;
